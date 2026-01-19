@@ -2,33 +2,28 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreatePontoRazaoTable extends Migration {
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('ponto_razao', function(Blueprint $table)
+        {
+            $table->integer('id', true);
+            $table->string('descricao', 100)->nullable();
+            $table->smallInteger('ativo')->nullable();
+        });
+    }
 
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function up()
-	{
-		Schema::create('ponto_razao', function(Blueprint $table)
-		{
-			$table->integer('id', true);
-			$table->string('descricao', 100)->nullable();
-			$table->smallInteger('ativo')->nullable();
-		});
-	}
-
-
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		Schema::drop('ponto_razao');
-	}
-
-}
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('ponto_razao');
+    }
+};

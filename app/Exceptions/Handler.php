@@ -3,41 +3,48 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Session;
 use Throwable;
-use Session;
 
 class Handler extends ExceptionHandler
 {
     /**
+     * A list of exception types with their corresponding custom log levels.
+     *
+     * @var array<class-string<\Throwable>, \Psr\Log\LogLevel::*>
+     */
+    protected $levels = [
+        //
+    ];
+
+    /**
      * A list of the exception types that are not reported.
      *
-     * @var array
+     * @var array<int, class-string<\Throwable>>
      */
     protected $dontReport = [
         //
     ];
 
     /**
-     * A list of the inputs that are never flashed for validation exceptions.
+     * A list of the inputs that are never flashed to the session on validation exceptions.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $dontFlash = [
+        'current_password',
         'password',
         'password_confirmation',
     ];
 
     /**
-     * Report or log an exception.
-     *
-     * @param  \Throwable  $exception
-     * @return void
-     *
-     * @throws \Exception
+     * Register the exception handling callbacks for the application.
      */
-    public function report(Throwable $exception)
+    public function register(): void
     {
-        parent::report($exception);
+        $this->reportable(function (Throwable $e) {
+            //
+        });
     }
 
     /**
@@ -51,20 +58,18 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        
-        if ($exception instanceof \Illuminate\Session\TokenMismatchException)
-        {
-            
+        if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
             $erro = "Sessão expirada. Favor efetuar o login!";
             Session::put('status.msg', $erro);
             
             return redirect()
-                    ->back()
-                    ->withInput($request->except('password'))
-                    ->with([
-                        'message' => 'Sessão expirada. Favor efetuar o login.',
-                        'message-type' => 'danger']);
-        } 
+                ->back()
+                ->withInput($request->except('password'))
+                ->with([
+                    'message' => 'Sessão expirada. Favor efetuar o login.',
+                    'message-type' => 'danger'
+                ]);
+        }
         
         return parent::render($request, $exception);
     }
