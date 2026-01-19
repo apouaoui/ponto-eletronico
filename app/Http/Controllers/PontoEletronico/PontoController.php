@@ -55,8 +55,7 @@ class PontoController extends PontoEletronicoController {
                 $ponto->status = 0;
                 $ponto->save();
                 
-                Session::put('status.msg', 'Entrada registrada com sucesso! Até breve!');
-                Session::put('status.error_redirect', $url_base.'/sair');
+                Session::put('status.msg', 'Entrada registrada com sucesso!');
                 
                 return redirect(getenv('APP_URL').'/dashboard');
             
@@ -70,8 +69,7 @@ class PontoController extends PontoEletronicoController {
                 $ponto->status = 0;
                 $ponto->save();
                 
-                Session::put('status.msg', 'Entrada registrada com sucesso! Até breve!');
-                Session::put('status.error_redirect', $url_base.'/sair');
+                Session::put('status.msg', 'Entrada registrada com sucesso!');
                 
                 return redirect(getenv('APP_URL').'/dashboard');
                 
@@ -93,8 +91,7 @@ class PontoController extends PontoEletronicoController {
                 $ponto->status = 0;
                 $ponto->save();
                 
-                Session::put('status.msg', 'Entrada registrada com sucesso! Até breve!');
-                Session::put('status.error_redirect', $url_base.'/sair');
+                Session::put('status.msg', 'Entrada registrada com sucesso!');
                 
                 return redirect(getenv('APP_URL').'/dashboard');
                 
@@ -126,8 +123,7 @@ class PontoController extends PontoEletronicoController {
                 $ponto->status = 0;
                 $ponto->save();
                 
-                Session::put('status.msg', 'Saída registrada com sucesso! Até breve!');
-                Session::put('status.error_redirect', $url_base.'/sair');
+                Session::put('status.msg', 'Saída registrada com sucesso!');
                 
                 return redirect(getenv('APP_URL').'/dashboard');
                 
@@ -138,8 +134,7 @@ class PontoController extends PontoEletronicoController {
                 $ponto->saida_status = 0;
                 $ponto->save();
                 
-                Session::put('status.msg', 'Saída registrada com sucesso! Até breve!');
-                Session::put('status.error_redirect', $url_base.'/sair');  
+                Session::put('status.msg', 'Saída registrada com sucesso!');  
                 
                 return redirect(getenv('APP_URL').'/dashboard');
             
@@ -182,8 +177,7 @@ class PontoController extends PontoEletronicoController {
             $ponto->status = 0;
             $ponto->save();
 
-            Session::put('status.msg', 'Entrada registrada com sucesso! Até breve!');
-            Session::put('status.error_redirect', $url_base.'/sair');
+            Session::put('status.msg', 'Entrada registrada com sucesso!');
             
         endif;
         
@@ -197,8 +191,7 @@ class PontoController extends PontoEletronicoController {
             $ponto->status = 0;
             $ponto->save();    
             
-            Session::put('status.msg', 'Saída registrada com sucesso! Até breve!');
-            Session::put('status.error_redirect', $url_base.'/sair');
+            Session::put('status.msg', 'Saída registrada com sucesso!');
             
         endif;
         
