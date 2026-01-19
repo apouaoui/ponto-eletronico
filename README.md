@@ -15,7 +15,7 @@ Sistema de ponto eletrônico simplificado, desenvolvido em LARAVEL, para empresa
 
 ## 🚀 Instalação
     
-Desenvolvido utilizando Laravel 7.0
+Desenvolvido utilizando Laravel 12.x
 
 Configure no seu arquivo .env as conexões com o mySQL.
 
