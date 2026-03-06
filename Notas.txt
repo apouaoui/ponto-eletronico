@@ -1,0 +1,70 @@
+Atualização do Projeto para Laravel 12 e PHP 8.4
+Resumo
+Criei um fork deste repositório e realizei a atualização completa do projeto de Laravel 7 para Laravel 12 e PHP 8.4.
+
+Principais Mudanças
+Dependências
+Laravel Framework: 7.0 → 12.47.0
+PHP: ^7.2.5 → ^8.2 (compatível com PHP 8.4)
+PHPUnit: 8.5 → 11.5.48
+Guzzle: 6.3 → 7.10.0
+Faker: fzaninotto/faker → fakerphp/faker
+Estrutura do Projeto
+Models movidos para app/Models/ (com aliases para compatibilidade retroativa)
+Seeders movidos para database/seeders/
+Factories atualizadas para usar classes em vez de closures
+Migrations atualizadas para sintaxe do Laravel 12
+Middlewares e Providers
+HTTP Kernel atualizado ($routeMiddleware → $middlewareAliases)
+RouteServiceProvider simplificado conforme padrão Laravel 12
+Todos os middlewares atualizados com type hints do PHP 8
+Service Providers atualizados
+Rotas
+Rotas atualizadas para sintaxe moderna do Laravel 12
+Removido uso de namespace em grupos de rotas
+Build Assets
+Laravel Mix substituído por Vite
+package.json atualizado
+vite.config.js criado
+Seeders
+AdminSeeder criado para inserir usuário administrador
+TestDataSeeder criado para inserir dados de teste
+DatabaseSeeder atualizado
+Configurações Atualizadas
+composer.json completamente atualizado
+Todas as migrations atualizadas para Laravel 12
+Seeder para testes
+Administrador
+CPF: 00000000000
+Senha: admin123
+Funcionários de Teste
+Todos os usuários de teste usam senha: 123456
+CPFs: 11111111111, 22222222222, 33333333333, etc.
+Testes Realizados
+Migrations executadas com sucesso
+Seeders funcionando corretamente
+Rotas funcionando
+Assets (CSS/JS) carregando corretamente
+Como Usar
+Instalar dependências
+composer install
+
+Configurar .env
+cp .env.example .env
+php artisan key:generate
+
+Executar migrations e seeders
+php artisan migrate:fresh --seed
+
+Iniciar servidor
+php artisan serve## Link do Fork
+
+Observações Importantes
+Mantida compatibilidade retroativa com aliases de Models
+Todos os arquivos antigos em app/ agora são aliases para app/Models/
+Recomendado atualizar gradualmente os controllers para usar App\Models*
+Documentação
+Todas as mudanças seguem a documentação oficial do Laravel:
+
+Laravel 12 Upgrade Guide: https://laravel.com/docs/12.x/upgrade
+Status: Pronto para revisão e merge
